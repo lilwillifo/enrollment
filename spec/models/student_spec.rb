@@ -9,5 +9,13 @@ describe Student, type: :model do
       student = Student.new
       expect(student).to respond_to(:addresses)
     end
+    it 'has many studentcourses' do
+      student = Student.new
+      expect(student).to respond_to(:student_courses)
+    end
+    it 'has many courses' do
+      student = Student.new
+      expect(student).to respond_to(:courses)
+    end
   end
 end
