@@ -26,7 +26,7 @@ describe 'As a user' do
 
 
       visit "/students/#{me.id}"
-      
+
       expect(page).to have_content(me.addresses.first.description)
       expect(page).to have_content(me.addresses.first.street)
       expect(page).to have_content(me.addresses.first.city)
@@ -37,6 +37,18 @@ describe 'As a user' do
       expect(page).to have_content(me.addresses.last.city)
       expect(page).to have_content(me.addresses.last.state)
       expect(page).to have_content(me.addresses.last.zip)
+    end
+    it 'I can see a list of courses that student is taking' do
+      me = Student.create(name: 'Margaret')
+      course_1 = me.courses.create(title: 'Math')
+      course_2 = me.courses.create(title: 'Science')
+      course_3 = Course.create(title: 'English')
+
+      visit "/students/#{me.id}"
+
+      expect(page).to have_content(course_1.title)
+      expect(page).to have_content(course_2.title)
+      expect(page).to_not have_content(course_3.title)
     end
   end
 end
