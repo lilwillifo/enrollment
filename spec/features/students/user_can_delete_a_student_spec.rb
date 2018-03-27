@@ -8,6 +8,8 @@ describe 'As a user' do
       student_3 = Student.create(name: 'Andrew')
 
       visit students_path
+      save_and_open_page
+
       within "student_#{student_3.id}" do
         click_on 'Delete'
       end
