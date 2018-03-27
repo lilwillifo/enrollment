@@ -6,7 +6,8 @@ describe 'As a user' do
       it 'i am redirected to that students show page and see my changes' do
         student = Student.create!(name: 'Haley')
 
-        visit `/students/:id/addresses/new`
+        visit new_student_address_path(student)
+
         fill_in 'Description', with: 'summer address'
         fill_in 'Street Address', with: '123 Main St'
         fill_in 'City', with: 'Denver'
