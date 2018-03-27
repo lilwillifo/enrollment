@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'As a user' do
-  context 'and I visit the show page' do
+  context 'and I visit any page' do
     it 'I see links to a list of all students' do
       student = Student.create(name:'kasjhdf')
       visit student_path(student)
@@ -11,7 +11,7 @@ describe 'As a user' do
     end
     it 'I see link to create a new student' do
       student = Student.create(name:'kasjhdf')
-      visit student_path(student)
+      visit students_path
       click_on 'Add a Student'
 
       expect(current_path).to eq(new_student_path)
